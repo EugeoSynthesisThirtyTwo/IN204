@@ -8,3 +8,5 @@ et comment les utiliser.
 
 Lors de la distribution du programme, les fichiers .dll et le dossier
 "ressources" : "Tetris/Tetris/ressources" doivent être dans le même dossier que l'exécutable.
+
+crédits de la musique à Smooth McGroove : https://www.youtube.com/watch?v=PV06M-Gqxgg
