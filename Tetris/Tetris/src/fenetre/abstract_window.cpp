@@ -51,27 +51,21 @@ void AbstractWindow::start()
 	SDL_SetMainReady();
 	#endif
 
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
 	{
 		std::cerr << "Echec de l'initalisation de la SDL : " << SDL_GetError();
 		exit(EXIT_FAILURE);
 	}
 
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
-	{
-		std::cerr << "Echec de l'initalisation de la SDL : %s" << SDL_GetError();
-		exit(EXIT_FAILURE);
-	}
-
 	if (TTF_Init() != 0)
 	{
-		std::cerr << "Echec de l'initalisation de la SDL_ttf : %s" << TTF_GetError();
+		std::cerr << "Echec de l'initalisation de la SDL_ttf : " << TTF_GetError();
 		exit(EXIT_FAILURE);
 	}
 
 	if (SDLNet_Init() != 0)
 	{
-		std::cerr << "Echec de l'initalisation de SDL_net : %s" << SDLNet_GetError();
+		std::cerr << "Echec de l'initalisation de SDL_net : " << SDLNet_GetError();
 		exit(EXIT_FAILURE);
 	}
 
@@ -79,13 +73,13 @@ void AbstractWindow::start()
 
 	if (IMG_Init(IMG_flags) != IMG_flags)
 	{
-		std::cerr << "Echec de l'initalisation de SDL_image : %s" << IMG_GetError();
+		std::cerr << "Echec de l'initalisation de SDL_image : " << IMG_GetError();
 		exit(EXIT_FAILURE);
 	}
 
 	if (Ressources::init() != 0)
 	{
-		std::cerr << "Erreur du chargement des ressources : %s", Ressources::GetError();
+		std::cerr << "Erreur du chargement des ressources : " << Ressources::GetError();
 		exit(EXIT_FAILURE);
 	}
 
